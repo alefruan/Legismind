@@ -1,0 +1,43 @@
+# Configuração do Supabase CLI para desenvolvimento local (`supabase start`).
+project_id = "legismind"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+file_size_limit = "100MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173/convite", "http://localhost:5173/redefinir-senha"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+# Acesso somente por convite: cadastro público desabilitado
+enable_signup = false
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = false
